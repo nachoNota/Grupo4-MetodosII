@@ -45,11 +45,6 @@ Para calcular el error relativo se utiliza un valor de referencia igual a $0.882
 | $N = 1 \times 10^8$ | 8 | 0.894645 | 0.8820540159 | 0.003103 |
 
 ---
-
-Aquí tienes los resultados para la función $\sin(x^2)$ formateados en Markdown, listos para que los agregues a tu informe final junto a los datos de tu compañero.
-
-Al igual que en la prueba anterior, notarás que tu tiempo baja a la mitad al pasar de 1 a 2 procesos (de 3.75s a 1.90s), pero nuevamente se estanca al usar 4 y 8 procesos (1.85s y 1.89s respectivamente), confirmando el límite físico de tu hardware frente al equipo de tu compañero, quien logró procesar esta misma función en 1.10 segundos con 8 procesos.
-
 ---
 
 ## Mediciones para $\sin(x^2)$ (Mi Entorno - WSL)
