@@ -1,6 +1,6 @@
 # Integración numérica y áreas irregulares con Monte Carlo en paralelo (MPI)
 
-Proyecto Final – [nombre de la materia]. Proyecto 4: Integración Numérica y Cálculo de Áreas Irregulares.
+Proyecto 4: Integración Numérica y Cálculo de Áreas Irregulares.
 
 Implementación en C con MPI de dos métodos de Monte Carlo, y un estudio de su convergencia, tiempo de ejecución, speedup y eficiencia:
 
