@@ -51,8 +51,6 @@ int main(int argc, char **argv) {
     long long n = (argc > 1) ? atoll(argv[1]) : 50000000LL;
     double a = 0.0, b = 2.0;
 
-    // Semilla: se pasa como 2do argumento (distinta en cada ejecución).
-    // Se siembra UNA sola vez, y cada proceso usa una semilla distinta.
     unsigned int semilla = (argc > 2) ? (unsigned int)atoi(argv[2]) : (unsigned int)time(NULL);
     MPI_Bcast(&semilla, 1, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
     srand(semilla + 7919 * rank);
@@ -60,9 +58,6 @@ int main(int argc, char **argv) {
     if (rank == 0) {
         printf("--- FASE 1: MONTE CARLO VALOR MEDIO (%d procesos) ---\n", size);
     }
-
-    // calentamiento (no se mide ni se imprime): evita que la primera función pague la inicialización de MPI
-    monte_carlo_mpi(f_exponencial, a, b, 100000, rank, size);
 
     calcular("exp(-x^2)", f_exponencial, a, b, n, rank, size);
     calcular("sin(x^2)",  f_seno,        a, b, n, rank, size);
