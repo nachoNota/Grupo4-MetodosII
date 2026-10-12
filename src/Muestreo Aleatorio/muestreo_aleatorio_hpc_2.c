@@ -22,8 +22,6 @@ int f_elipse(double x, double y) {
 
 double monte_carlo_2d_mpi(int (*figura)(double, double), double x_min, double x_max, double y_min, double y_max, long long n, int rank, int size) {
     
-    srand(time(NULL) + (rank * 100));
-    
     long long aciertos_locales = 0;
     long long aciertos_totales = 0;
     
@@ -56,7 +54,7 @@ static void calcular_2d(const char *nombre, int (*figura)(double, double), doubl
     double t1 = MPI_Wtime();
     
     if (rank == 0) {
-        printf("%-15s | N = %lld | Area: %.10f | Tiempo: %.6f s\n",
+        printf("%-15s | N = %lld | Area: %.10f | Tiempo: %.9f s\n",
                nombre, n, resultado, t1 - t0);
     }
 }
@@ -78,6 +76,10 @@ int main(int argc, char **argv) {
         MPI_Finalize();
         return 1;
     }
+
+    unsigned int semilla = (argc > 2) ? (unsigned int)atoi(argv[2]) : (unsigned int)time(NULL);
+    MPI_Bcast(&semilla, 1, MPI_UNSIGNED, 0, MPI_COMM_WORLD);
+    srand(semilla + 7919 * rank);
 
     if (rank == 0) {
         printf("--- FASE 2: MONTE CARLO ACIERTO Y ERROR (%d procesos) ---\n", size);
