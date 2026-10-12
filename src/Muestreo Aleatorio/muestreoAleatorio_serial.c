@@ -44,7 +44,6 @@ static void calcular_2d(const char *nombre, int (*figura)(double, double), doubl
     clock_t t1 = clock();
     double tiempo_ejecucion = (double)(t1 - t0) / CLOCKS_PER_SEC;
     
-    // Formato de salida idéntico a la versión MPI
     printf("%-15s | N = %lld | Area: %.10f | Tiempo: %.9f s\n",
            nombre, n, resultado, tiempo_ejecucion);
 }
